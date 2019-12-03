@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurants{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        <div class="card">
+             <div class="card-header">
+                    <div class="card-title">
+                       <h3> Fiche  - {{ restaurant.Nom }} </h3>
+                     </div>
+                     </div>
+            <div class="card-body">
+                          <table class="table-striped table">
+        <tbody>          
+           
+            <tr>
+                <th>Telephone1</th>
+                <td>{{ restaurant.Telephone1 }}</td>
+            </tr>
+            <tr>
+                <th>Telephone2</th>
+                <td>{{ restaurant.Telephone2 }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ restaurant.Localisation }}</td>
+            </tr>
+        </tbody>
+    </table> 
+   
+            </div>
+            <div class="card-footer text-muted">
+             <div class="button-group">
+             <button type="button" class="btn waves-effect waves-light btn-outline-info">Modifier</button>
+         <button type="button" class="btn waves-effect waves-light btn-outline-success">Nouveau plat</button>
+         <button type="button" class="btn waves-effect waves-light btn-outline-danger">Supprimer</button>
+       
+             </div>  
+            </div>
+
+        </div>
+        </div> 
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+        <div class="card">
+             <div class="card-header">
+                    <div class="card-title">
+                       <h3> Plats Proposés </h3>
+                     </div>
+                     </div>
+            <div class="card-body">
+            <table class="table-striped table">
+                         <thead>
+                             <tr>
+                                 <th>#</th>
+                                 <th>Plats</th>
+                                 <th>PA</th>
+                                 <th>PV</th>
+                                 
+                                 <th></th>
+
+                             </tr>
+                             </thead>
+                             </tbody>
+                             {% for plat in  restaurant.plats %}
+                            <tr>
+                                     <td>{{ loop.index }}</td>
+                                       <td>{{ plat.Libelle }}</td>
+                                         <td>{{ plat.PrixAchat }}</td>
+                                         <td>{{ plat.PrixVente }}</td>
+                                         <td>
+                                         <div class="button-group">
+                                          <button type="button" class="btn waves-effect waves-light btn-outline-info">Modifier</button>
+                                            <button type="button" class="btn waves-effect waves-light btn-outline-danger">Supprimer</button>
+                                    </div>
+                                         </td>
+                            </tr>      
+                                 
+                             {% endfor %}
+                             </tbody>
+                         </table>
+                            
+            </div>
+        </div>
+        </div> 
+      </div> 
+</div>       
+
+
+{% endblock %}

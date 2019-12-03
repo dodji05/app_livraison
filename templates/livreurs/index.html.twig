@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+{% endblock %}
+{% block titre_page %} LISTE DES LivreurS {% endblock %}
+{% block sous_titre_page %} Les Livreurs {% endblock %}
+{% block nouveau %}<a href="{{ path('Livreurs_new') }}">Nouveau</a>{% endblock %}
+
+{% block contenuprincipal %}
+    <div class=" main-container table-container" >
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Nom Livreur</th>
+                <th>Prenom Livreur</th>
+                <th>Telephone1</th>
+                <th>Telephone2</th>
+                
+                <th>Sexe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for Livreur in Livreurs %}
+            <tr>
+
+                <td>{{ Livreur.NomLivreur }}</td>
+                <td>{{ Livreur.PrenomLivreur }}</td>
+                <td>{{ Livreur.Telephone1 }}</td>
+                <td>{{ Livreur.Telephone2 }}</td>
+               
+                <td>{{ Livreur.Sexe }}</td>
+                <td>
+                    <a href="{{ path('Livreurs_show', {'id': Livreur.id}) }}">show</a>
+                    <a href="{{ path('Livreurs_edit', {'id': Livreur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready( function () {
+        $('.table').DataTable({
+            responsive: true,
+            url: "http://cdn.datatables.net/plug-ins/1.10.9/i18n/French.json",
+            "pageLength": 20,
+            lengthMenu:[20,25,30,55,100,500],
+        });
+
+    } );
+</script>
+{% endblock %}

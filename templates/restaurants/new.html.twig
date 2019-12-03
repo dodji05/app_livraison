@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block title %}New Restaurants{% endblock %}
+
+{% block content%}
+ <div class="main-container">
+         <div class="row">
+             {#<div class="col-6 offset-3">#}
+             <div class="col-sm-10  offset-1">
+                 <div class="card">
+                     <div class="card-header">
+                         <div class="card-title">
+                             <h3> Nouveau restaurant </h3>
+                         </div>
+                     </div>
+                     <div class="card-body">
+                        {{ include('restaurants/_form.html.twig') }}
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+</div>
+
+   
+    {#<a href="{{ path('restaurants_index') }}">back to list</a>#}
+{% endblock %}
+{% block javascript%}
+ <script>
+
+    jQuery(document).ready(function() {
+        $("body").delegate("#addItem", "click", addItem)
+
+    });
+
+function addItem (e){
+
+    var $detalles = $("#restaurants_plats");
+    var $test  = $("#restaurants_plats").find('table').find('tbody');
+    // var $detalles = $("#scom_bundle_ventes_type_vente").closest('tbody');
+    var $index = $detalles.children().length;
+    var $index2 = $test.children().length;
+    // var $detalle = $detalles.attr("data-prototype").replace(/__name__/g, $index).replace(/__num__/g, $index);
+    var $detalle = $detalles.attr("data-prototype").replace(/__name__/g, $index2).replace(/__num__/g, $index2);
+    //  var $test  = $("#scom_bundle_ventes_type_vente").find('table').find('tbody');
+    //  alert('$test')
+    // $detalles.append( $detalle);
+    $test.append( $detalle)
+   
+};
+</script>
+{% endblock %}

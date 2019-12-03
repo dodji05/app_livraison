@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block titre_page %}Livreur {% endblock %}
+{% block sous_titre_page %} Nouveau Livreur {% endblock %}
+{% block nouveau %}<a href="{{ path('Livreurs_new') }}">Nouveau</a>{% endblock %}
+
+
+ {% block contenuprincipal %}
+
+
+    <div class="main-container">
+        <div class="row">
+            <div class="col-sm-12">
+                {#Create new Livreurs#}
+
+                {{ include('livreurs/_form.html.twig') }}
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
